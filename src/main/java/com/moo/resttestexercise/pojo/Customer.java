@@ -1,4 +1,4 @@
-package com.moo.resttestexercise;
+package com.moo.resttestexercise.pojo;
 
 import java.time.LocalDate;
 import java.util.Objects;

@@ -1,6 +1,6 @@
 package com.moo.resttestexercise.service;
 
-import com.moo.resttestexercise.Customer;
+import com.moo.resttestexercise.pojo.Customer;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,8 @@ public class InMemoryCustomerService implements CustomerService {
                 .collect(Collectors.toList());
     }
 
-    void addCustomer(final Customer customer) {
+    @Override
+    public void addCustomer(final Customer customer) {
         customers.add(customer);
     }
 }

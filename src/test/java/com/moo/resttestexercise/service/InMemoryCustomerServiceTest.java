@@ -1,6 +1,6 @@
 package com.moo.resttestexercise.service;
 
-import com.moo.resttestexercise.Customer;
+import com.moo.resttestexercise.pojo.Customer;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.collection.IsEmptyCollection;
 import org.hamcrest.core.IsIterableContaining;
