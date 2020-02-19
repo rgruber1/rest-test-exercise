@@ -1,4 +1,6 @@
-package com.moo.resttestexercise;
+package com.moo.resttestexercise.service;
+
+import com.moo.resttestexercise.Customer;
 
 import java.util.List;
 
