@@ -5,29 +5,19 @@ import java.util.Objects;
 
 public class Customer {
 
+    private Integer id;
     private String firstName;
-    private String lastName;
+    private String surname;
     private LocalDate dateOfBirth;
     private String telephoneNumber;
 
-    public Customer(final String firstName, final String lastName, final LocalDate dateOfBirth,
+    public Customer(final Integer id, final String firstName, final String surname, final LocalDate dateOfBirth,
                     final String telephoneNumber) {
+        this.id = id;
         this.firstName = firstName;
-        this.lastName = lastName;
+        this.surname = surname;
         this.dateOfBirth = dateOfBirth;
         this.telephoneNumber = telephoneNumber;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getTelephoneNumber() {
-        return telephoneNumber;
-    }
-
-    public String getFirstName() {
-        return firstName;
     }
 
     @Override
@@ -39,13 +29,28 @@ public class Customer {
             return false;
         }
         final Customer customer = (Customer) o;
-        return Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) &&
-                Objects.equals(dateOfBirth, customer.dateOfBirth);
+        return id == customer.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, dateOfBirth);
+        return Objects.hash(id);
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
+
+    public String getFirstName() {
+        return firstName;
     }
 
     public LocalDate getDateOfBirth() {

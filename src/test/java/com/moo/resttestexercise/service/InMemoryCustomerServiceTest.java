@@ -22,8 +22,7 @@ public class InMemoryCustomerServiceTest {
     public void testSearch() {
         MatcherAssert.assertThat(service.findBySurname("Bloggs"), IsEmptyCollection.empty());
 
-        Customer customer = new Customer("Joe", "Bloggs", LocalDate.of(1970, 1, 1), "020 8255 4444");
-        service.addCustomer(customer);
+        Customer customer = service.addCustomer("Joe", "Bloggs", LocalDate.of(1970, 1, 1), "020 8255 4444");
 
         MatcherAssert.assertThat(service.findBySurname("Smith"), IsEmptyCollection.empty());
         MatcherAssert.assertThat(service.findBySurname("Blog"), IsIterableContaining.hasItem(customer));
