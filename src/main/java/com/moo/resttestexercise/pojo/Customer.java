@@ -5,13 +5,13 @@ import java.util.Objects;
 
 public class Customer {
 
-    private Integer id;
+    private Long id;
     private String firstName;
     private String surname;
     private LocalDate dateOfBirth;
     private String telephoneNumber;
 
-    public Customer(final Integer id, final String firstName, final String surname, final LocalDate dateOfBirth,
+    public Customer(final Long id, final String firstName, final String surname, final LocalDate dateOfBirth,
                     final String telephoneNumber) {
         this.id = id;
         this.firstName = firstName;
@@ -29,7 +29,7 @@ public class Customer {
             return false;
         }
         final Customer customer = (Customer) o;
-        return id == customer.id;
+        return id.equals(customer.id);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class Customer {
         return Objects.hash(id);
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
