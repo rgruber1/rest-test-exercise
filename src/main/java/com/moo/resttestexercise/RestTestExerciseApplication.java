@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDate;
 
+/**
+ * Main entry point for the REST Server.
+ */
 @SpringBootApplication
 public class RestTestExerciseApplication {
 
@@ -18,8 +21,8 @@ public class RestTestExerciseApplication {
     @Bean
     CommandLineRunner initDatabase(CustomerService service) {
         return args -> {
-            service.addCustomer("Fred", "Bloggs", LocalDate.of(1982, 2, 11), "020 7433 1234");
-            service.addCustomer("Joe", "Bloggs", LocalDate.of(1970, 1, 1), "020 8255 4444");
+            service.addCustomer("Fred", "Bloggs", "Manchester", LocalDate.of(1982, 2, 11), "020 7433 1234");
+            service.addCustomer("Joe", "Bloggs", "London", LocalDate.of(1970, 1, 1), "020 8255 4444");
         };
     }
 

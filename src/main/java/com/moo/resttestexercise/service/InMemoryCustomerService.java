@@ -1,6 +1,7 @@
 package com.moo.resttestexercise.service;
 
 import com.moo.resttestexercise.pojo.Customer;
+import com.moo.resttestexercise.pojo.CustomerSearchResult;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
@@ -31,14 +32,16 @@ public class InMemoryCustomerService implements CustomerService {
     }
 
     @Override
-    public List<Customer> findBySurname(String surname) {
+    public List<CustomerSearchResult> findBySurname(String surname) {
         return customers.values().stream()
-                .filter(customer -> StringUtils.containsIgnoreCase(customer.getSurname(), surname))
+                .filter(customer -> StringUtils.containsIgnoreCase(customer.getSurname(), surname)).map(
+                        CustomerSearchResult::from)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public Customer addCustomer(String firstName, String surname, LocalDate dateOfBirth, String telephoneNumber) {
+    public Customer addCustomer(String firstName, String surname, String city, LocalDate dateOfBirth,
+                                String telephoneNumber) {
         Optional<Customer> optionalCustomer = customers.values().stream()
                 .filter(customer -> Objects.equals(customer.getDateOfBirth(), dateOfBirth) &&
                         Objects.equals(customer.getFirstName(), firstName) &&
@@ -47,7 +50,7 @@ public class InMemoryCustomerService implements CustomerService {
             return optionalCustomer.get();
         } else {
             Customer result =
-                    new Customer(idGenerator.getAndIncrement(), firstName, surname, dateOfBirth, telephoneNumber);
+                    new Customer(idGenerator.getAndIncrement(), firstName, surname, city, dateOfBirth, telephoneNumber);
             customers.put(result.getId(), result);
             return result;
 

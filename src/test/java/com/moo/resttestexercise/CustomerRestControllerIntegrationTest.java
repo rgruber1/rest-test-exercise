@@ -38,7 +38,7 @@ public class CustomerRestControllerIntegrationTest {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/customers/1")).andExpect(status().is4xxClientError());
 
         // given
-        service.addCustomer("Joe", "Bloggs", LocalDate.of(1970, 1, 1), "020 8255 4444");
+        service.addCustomer("Joe", "Bloggs", "London", LocalDate.of(1970, 1, 1), "020 8255 4444");
         // when, then
         this.mockMvc.perform(MockMvcRequestBuilders.get("/customers/1")).andExpect(status().isOk()).andExpect(content()
                 .string(IsEqual.equalTo(
@@ -51,14 +51,14 @@ public class CustomerRestControllerIntegrationTest {
                 .andExpect(status().isOk()).andExpect(content().string(IsEqual.equalTo("[]")));
 
         // given
-        service.addCustomer("Joe", "Bloggs", LocalDate.of(1970, 1, 1), "020 8255 4444");
+        service.addCustomer("Joe", "Bloggs", "London", LocalDate.of(1970, 1, 1), "020 8255 4444");
         // when, then
         this.mockMvc.perform(MockMvcRequestBuilders.get("/customers/search").param("surname", "bloggs"))
                 .andExpect(status().isOk()).andExpect(content().string(IsEqual.equalTo(
                 "[{\"id\":1,\"firstName\":\"Joe\",\"surname\":\"Bloggs\",\"dateOfBirth\":\"1970-01-01\",\"telephoneNumber\":\"020 8255 4444\"}]")));
 
         // given
-        service.addCustomer("Fred", "Bloggs", LocalDate.of(1982, 2, 11), "020 7433 1234");
+        service.addCustomer("Fred", "Bloggs", "Manchester", LocalDate.of(1982, 2, 11), "020 7433 1234");
         // when, then
         this.mockMvc.perform(MockMvcRequestBuilders.get("/customers/search").param("surname", "bloggs"))
                 .andExpect(status().isOk()).andExpect(content().string(IsEqual.equalTo(

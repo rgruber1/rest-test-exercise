@@ -1,6 +1,7 @@
 package com.moo.resttestexercise.service;
 
 import com.moo.resttestexercise.pojo.Customer;
+import com.moo.resttestexercise.pojo.CustomerSearchResult;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -12,8 +13,8 @@ public interface CustomerService {
 
     Optional<Customer> findById(Long id);
 
-    List<Customer> findBySurname(String surname);
+    List<CustomerSearchResult> findBySurname(String surname);
 
-    Customer addCustomer(String firstName, String surname, LocalDate dateOfBirth, String telephoneNumber);
+    Customer addCustomer(String firstName, String surname, String city, LocalDate dateOfBirth, String telephoneNumber);
 
 }
