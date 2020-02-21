@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * POJO - Encapsulates a customer.
+ * Encapsulates a customer.
  */
 public class Customer {
 

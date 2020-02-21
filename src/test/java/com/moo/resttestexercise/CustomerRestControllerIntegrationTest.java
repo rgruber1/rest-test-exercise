@@ -42,7 +42,7 @@ public class CustomerRestControllerIntegrationTest {
         // when, then
         this.mockMvc.perform(MockMvcRequestBuilders.get("/customers/1")).andExpect(status().isOk()).andExpect(content()
                 .string(IsEqual.equalTo(
-                        "{\"id\":1,\"firstName\":\"Joe\",\"surname\":\"Bloggs\",\"dateOfBirth\":\"1970-01-01\",\"telephoneNumber\":\"020 8255 4444\"}")));
+                        "{\"id\":1,\"firstName\":\"Joe\",\"surname\":\"Bloggs\",\"city\":\"London\",\"dateOfBirth\":\"1970-01-01\",\"telephoneNumber\":\"020 8255 4444\"}")));
     }
 
     @Test
@@ -55,14 +55,14 @@ public class CustomerRestControllerIntegrationTest {
         // when, then
         this.mockMvc.perform(MockMvcRequestBuilders.get("/customers/search").param("surname", "bloggs"))
                 .andExpect(status().isOk()).andExpect(content().string(IsEqual.equalTo(
-                "[{\"id\":1,\"firstName\":\"Joe\",\"surname\":\"Bloggs\",\"dateOfBirth\":\"1970-01-01\",\"telephoneNumber\":\"020 8255 4444\"}]")));
+                "[{\"id\":1,\"firstName\":\"Joe\",\"surname\":\"Bloggs\",\"city\":\"London\"}]")));
 
         // given
         service.addCustomer("Fred", "Bloggs", "Manchester", LocalDate.of(1982, 2, 11), "020 7433 1234");
         // when, then
         this.mockMvc.perform(MockMvcRequestBuilders.get("/customers/search").param("surname", "bloggs"))
                 .andExpect(status().isOk()).andExpect(content().string(IsEqual.equalTo(
-                "[{\"id\":1,\"firstName\":\"Joe\",\"surname\":\"Bloggs\",\"dateOfBirth\":\"1970-01-01\",\"telephoneNumber\":\"020 8255 4444\"},{\"id\":2,\"firstName\":\"Fred\",\"surname\":\"Bloggs\",\"dateOfBirth\":\"1982-02-11\",\"telephoneNumber\":\"020 7433 1234\"}]")));
+                "[{\"id\":1,\"firstName\":\"Joe\",\"surname\":\"Bloggs\",\"city\":\"London\"},{\"id\":2,\"firstName\":\"Fred\",\"surname\":\"Bloggs\",\"city\":\"Manchester\"}]")));
     }
 
 }

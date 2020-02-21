@@ -2,6 +2,9 @@ package com.moo.resttestexercise.pojo;
 
 import java.util.Objects;
 
+/**
+ * Encapsulates a Customer search result.
+ */
 public class CustomerSearchResult {
 
     private Long id;

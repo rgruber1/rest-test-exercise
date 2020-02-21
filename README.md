@@ -28,3 +28,8 @@ http://localhost:8080/search?surname=bloggs
 ```
 http://localhost:8080/customers/1
 ````
+
+### Future development and features:
+* Security
+* Full REST CRUD support
+* Spring Boot spring-boot-starter-actuator Actuator production-ready management and monitoring support 
